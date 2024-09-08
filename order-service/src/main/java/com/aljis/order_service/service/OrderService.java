@@ -44,8 +44,12 @@ public class OrderService {
             log.info("Order saved {}", order.getSkuCode());
 
             // send a message to kafka topic
-            OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(order.getOrderNumber(), orderRequest.getUserDetails().getEmail());
+            OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent();
 
+            orderPlacedEvent.setOrderNumber(order.getOrderNumber());
+            orderPlacedEvent.setEmail(order.getEmail());
+            orderPlacedEvent.setFirstName("Alji");
+            orderPlacedEvent.setLastName("Abdul");
             log.info("start - Sending Order Placed Event {} to kafka topic order-placed", orderPlacedEvent);
             kafkaTemplate.send("order-placed", orderPlacedEvent);
             log.info("end - Sending Order Placed Event {} to kafka topic order-placed", orderPlacedEvent);

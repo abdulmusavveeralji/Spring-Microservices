@@ -1,7 +1,7 @@
 {
     "type": "record",
     "name": "OrderPlacedEvent",
-    "namespace": "com.aljis.order_service.event",
+    "namespace": "com.alji.notification_service.order.event",
     "fields": [
         { "name": "orderNumber", "type": "string"},
         { "name": "email", "type": "string"},
